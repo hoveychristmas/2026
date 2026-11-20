@@ -236,10 +236,13 @@ footer .year {
   .welcome h2 {
     font-size: 28px;
   }
-
+  .video-message {
+    bottom: 8px;  
+  }
   .video-section {
     padding: 8px 16px 28px;
   }
+  
 }
 .surprise-button {
   display: block;
@@ -265,7 +268,7 @@ footer .year {
 .video-message {
   display: none;
   position: absolute;
-  bottom: 100px;
+  bottom: 32px;
   left: 0;
   width: 100%;
   padding: 18px 12px;
