@@ -265,7 +265,7 @@ footer .year {
 .video-message {
   display: none;
   position: absolute;
-  bottom: 32px;
+  bottom: 100px;
   left: 0;
   width: 100%;
   padding: 18px 12px;
