@@ -14,6 +14,10 @@ const videos = [
   }
 ];
 
+const recipientName = "Luna";
+const senderName = "Dadders";
+const christmasYear = "2026";
+
 let lastVideoIndex = -1;
 
 const videoPlayer = document.getElementById("surprise-video");
