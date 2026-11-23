@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#183d32">
-  <title>Christmas Memories</title>
+  <title>Hovey Homemade Christmas 2026</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,54 +12,50 @@
     <header class="site-header">
       <div class="ornament">✦</div>
       <p class="eyebrow">A LITTLE CHRISTMAS MAGIC</p>
-      <h1>Christmas Memories</h1>
-      <p class="subtitle">A little surprise, just for you.</p>
+      <h1>Hovey Homemade</h1>
+      <p class="subtitle">Christmas 2026</p>
     </header>
 
     <section class="welcome">
       <p class="eyebrow">WITH LOVE</p>
-      <h2>Merry Christmas!</h2>
+      <h2 id="christmas-greeting">Merry Christmas!</h2>
       <p>
         Someone has a special message waiting just for you.
         Take a moment, get cozy, and enjoy.
       </p>
     </section>
 
+    <section class="video-section">
+      <div class="video-frame">
+        <video id="surprise-video" controls playsinline preload="metadata">
+          Your browser does not support video playback.
+        </video>
 
-<section class="video-section">
+        <div id="video-message" class="video-message">
+          A special Christmas message for you ❤️
+        </div>
 
-  <div class="video-frame">
+        <div id="video-placeholder" class="video-placeholder">
+          <img id="recipient-photo" src="images/luna.jpeg" alt="Luna's Christmas portrait">
+          <div class="image-overlay">
+            <p>Your Christmas surprise awaits</p>
+          </div>
+        </div>
+      </div>
 
-  <video id="surprise-video" controls playsinline preload="metadata">
-    Your browser does not support video playback.
-  </video>
+      <button id="play-surprise" class="surprise-button">
+        ▶ Play My Christmas Surprise!
+      </button>
 
-  <div id="video-message" class="video-message">
-    A special Christmas message for you ❤️
-  </div>
-
-  <div id="video-placeholder" class="video-placeholder">
-    <img src="images/luna.jpeg" alt="Luna's Christmas portrait">
-    <div class="image-overlay">
-      <p>Your Christmas surprise awaits</p>
-    </div>
-  </div>
-
-</div>
-
-  <button id="play-surprise" class="surprise-button">
-    ▶ Play My Christmas Surprise!
-  </button>
-  <p class="video-caption">
-    A special moment, made just for you.
-  </p>
-
-</section>
+      <p class="video-caption">
+        A special moment, made just for you.
+      </p>
+    </section>
 
     <footer>
       <div class="footer-star">✧</div>
-      <p>Made with love this Christmas</p>
-      <p class="year">Christmas 2026</p>
+      <p id="made-with-love">Made with love</p>
+      <p class="year" id="christmas-year">Christmas 2026</p>
     </footer>
   </main>
 

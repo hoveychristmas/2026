@@ -1,22 +1,54 @@
+// =====================================
+// PERSONALIZED CHRISTMAS SETTINGS
+// Change these details for each person
+// =====================================
 
-const videos = [
-  {
-    file: "videos/sample.mp4",
-    message: "Merry Christmas, Luna! ❤️"
-  },
-  {
-    file: "videos/luna2.mp4",
-    message: "I love belly rubs and snuggles 🥰"
-  },
-  {
-    file: "videos/luna3.mp4",
-    message: "Eat your deen-ur 🍲"
-  }
-];
+const christmasConfig = {
+  recipientName: "Luna",
+  senderName: "Dadders",
+  christmasYear: "2026",
+  photo: "images/luna.jpeg",
 
-const recipientName = "Luna";
-const senderName = "Dadders";
-const christmasYear = "2026";
+  videos: [
+    {
+      file: "videos/sample.mp4",
+      message: "Merry Christmas, Luna! ❤️"
+    },
+    {
+      file: "videos/luna2.mp4",
+      message: "I love belly rubs and snuggles 🥰"
+    },
+    {
+      file: "videos/luna3.mp4",
+      message: "Eat your deen-ur 🍲"
+    }
+  ]
+};
+
+// =====================================
+// PAGE PERSONALIZATION
+// =====================================
+
+document.title = `Hovey Homemade Christmas ${christmasConfig.christmasYear}`;
+
+document.getElementById("christmas-greeting").textContent =
+  `Merry Christmas, ${christmasConfig.recipientName}! ❤️`;
+
+document.getElementById("made-with-love").textContent =
+  `Made with love by ${christmasConfig.senderName}`;
+
+document.getElementById("christmas-year").textContent =
+  `Christmas ${christmasConfig.christmasYear}`;
+
+const recipientPhoto = document.getElementById("recipient-photo");
+recipientPhoto.src = christmasConfig.photo;
+recipientPhoto.alt = `${christmasConfig.recipientName}'s Christmas portrait`;
+
+// =====================================
+// VIDEO PLAYER
+// =====================================
+
+const videos = christmasConfig.videos;
 
 let lastVideoIndex = -1;
 
@@ -32,15 +64,15 @@ videoMessage.classList.remove("active");
 videoPlaceholder.style.display = "block";
 
 playButton.addEventListener("click", function () {
-let randomIndex;
+  let randomIndex;
 
-do {
-  randomIndex = Math.floor(Math.random() * videos.length);
-} while (randomIndex === lastVideoIndex);
+  do {
+    randomIndex = Math.floor(Math.random() * videos.length);
+  } while (videos.length > 1 && randomIndex === lastVideoIndex);
 
-lastVideoIndex = randomIndex;
+  lastVideoIndex = randomIndex;
 
-const selectedVideo = videos[randomIndex];
+  const selectedVideo = videos[randomIndex];
 
   videoPlayer.src = selectedVideo.file;
   videoPlayer.controls = true;
@@ -51,6 +83,7 @@ const selectedVideo = videos[randomIndex];
 
   videoMessage.textContent = selectedVideo.message;
   videoMessage.classList.add("active");
+
   playButton.textContent = "▶ Play Another Surprise!";
 
   videoPlayer.load();
