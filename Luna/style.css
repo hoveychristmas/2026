@@ -236,9 +236,7 @@ footer .year {
   .welcome h2 {
     font-size: 28px;
   }
-  .video-message {
-    bottom: 5%;  
-  }
+
   .video-section {
     padding: 8px 16px 28px;
   }
@@ -268,7 +266,7 @@ footer .year {
 .video-message {
   display: none;
   position: absolute;
-  bottom: 32px;
+  bottom: 12px;
   left: 0;
   width: 100%;
   padding: 18px 12px;
@@ -285,4 +283,4 @@ footer .year {
 
 .video-message.active {
   display: block;
-} 
+}
