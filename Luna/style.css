@@ -263,21 +263,22 @@ footer .year {
   transform: scale(0.98);
   background: var(--deep-green);
 }
+
 .video-message {
   display: none;
   position: absolute;
-  bottom: 5px;
+  top: 12px;
   left: 0;
   width: 100%;
-  padding: 18px 12px;
-  background: rgba(16, 44, 36, 0.35);
-  color: var(--cream);
+  padding: 12px 14px;
+  background: rgba(16, 44, 36, 0.65);
+  color: white;
   text-align: center;
   font-family: Georgia, serif;
   font-size: 15px;
   font-style: italic;
   line-height: 1.4;
-  z-index: 5;
+  z-index: 10;
   pointer-events: none;
 }
 
