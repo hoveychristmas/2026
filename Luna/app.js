@@ -49,19 +49,49 @@ recipientPhoto.src = christmasConfig.photo;
 recipientPhoto.alt = `${christmasConfig.recipientName}'s Christmas portrait`;
 
 
+
 // =====================================
 // VIDEO PLAYER
 // =====================================
 
 const videos = christmasConfig.videos;
 
-let lastVideoIndex = -1;
 let firstPlay = true;
+let lastVideoIndex = -1;
+let shuffleBag = [];
 
 const videoPlayer = document.getElementById("surprise-video");
 const videoPlaceholder = document.getElementById("video-placeholder");
 const playButton = document.getElementById("play-surprise");
 const videoMessage = document.getElementById("video-message");
+
+// Shuffle an array using Fisher-Yates
+function shuffleVideos(array) {
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+// Fill the shuffle bag with every video
+function refillShuffleBag() {
+  shuffleBag = shuffleVideos(
+    videos.map((video, index) => index)
+  );
+
+  // Prevent an immediate repeat across rounds
+  if (
+    shuffleBag.length > 1 &&
+    shuffleBag[shuffleBag.length - 1] === lastVideoIndex
+  ) {
+    [shuffleBag[0], shuffleBag[shuffleBag.length - 1]] =
+      [shuffleBag[shuffleBag.length - 1], shuffleBag[0]];
+  }
+}
 
 // Initial opening screen
 videoPlayer.classList.remove("active");
@@ -77,13 +107,13 @@ playButton.addEventListener("click", function () {
     selectedIndex = 0;
     firstPlay = false;
   } else {
-    // Randomize all videos, including Santa
-    do {
-      selectedIndex = Math.floor(Math.random() * videos.length);
-    } while (
-      videos.length > 1 &&
-      selectedIndex === lastVideoIndex
-    );
+    // Refill when all videos have played
+    if (shuffleBag.length === 0) {
+      refillShuffleBag();
+    }
+
+    // Take the next video from the shuffled bag
+    selectedIndex = shuffleBag.pop();
   }
 
   lastVideoIndex = selectedIndex;
