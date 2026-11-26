@@ -9,7 +9,11 @@ const christmasConfig = {
   christmasYear: "2026",
   photo: "images/luna.jpeg",
 
-  videos: [
+    videos: [
+    {
+      file: "videos/santa.mp4",
+      message: "Merry Christmas, Luna! 🎅❤️"
+    },
     {
       file: "videos/sample.mp4",
       message: "Merry Christmas, Luna! ❤️"
@@ -44,6 +48,7 @@ const recipientPhoto = document.getElementById("recipient-photo");
 recipientPhoto.src = christmasConfig.photo;
 recipientPhoto.alt = `${christmasConfig.recipientName}'s Christmas portrait`;
 
+
 // =====================================
 // VIDEO PLAYER
 // =====================================
@@ -51,6 +56,7 @@ recipientPhoto.alt = `${christmasConfig.recipientName}'s Christmas portrait`;
 const videos = christmasConfig.videos;
 
 let lastVideoIndex = -1;
+let firstPlay = true;
 
 const videoPlayer = document.getElementById("surprise-video");
 const videoPlaceholder = document.getElementById("video-placeholder");
@@ -64,15 +70,25 @@ videoMessage.classList.remove("active");
 videoPlaceholder.style.display = "block";
 
 playButton.addEventListener("click", function () {
-  let randomIndex;
+  let selectedIndex;
 
-  do {
-    randomIndex = Math.floor(Math.random() * videos.length);
-  } while (videos.length > 1 && randomIndex === lastVideoIndex);
+  if (firstPlay) {
+    // Always play Santa first
+    selectedIndex = 0;
+    firstPlay = false;
+  } else {
+    // Randomize all videos, including Santa
+    do {
+      selectedIndex = Math.floor(Math.random() * videos.length);
+    } while (
+      videos.length > 1 &&
+      selectedIndex === lastVideoIndex
+    );
+  }
 
-  lastVideoIndex = randomIndex;
+  lastVideoIndex = selectedIndex;
 
-  const selectedVideo = videos[randomIndex];
+  const selectedVideo = videos[selectedIndex];
 
   videoPlayer.src = selectedVideo.file;
   videoPlayer.controls = true;
